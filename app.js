@@ -11,3 +11,7 @@ app.get('/',(req,res) => res.send('Hello,Express, we come back ! ')); // Define 
 //  -res : response , object to send to the client
 
 app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
+
+// To see modification and not cut every time the server we will use nodemon.
+// Nodemon will execute our project in background process.
+// He will restart at every code change.
