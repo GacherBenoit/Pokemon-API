@@ -1,7 +1,17 @@
+// fetching express dependency with require keyword from node module folder
+const express = require('express')  
 
-const express = require('express')  // fetching express dependency with require keyword from node module folder
+//Data
 let pokemons = require('./mock-pokemon');
+
+// Message module import with destructuring
 const {success} = require('./helper.js');
+
+// middleware morgan import
+const morgan=require('morgan');
+
+// Favicon
+const favicon = require('serve-favicon');
 
 const app = express(); // creating an instance of an express application
 
@@ -14,12 +24,21 @@ app.get('/',(req,res) => res.send('Hello,Express! ')); // Define endpoint with g
 //  -req : request object corresponding to the request recieve  by the endpoint
 //  -res : response , object to send to the client
 
+
+//MIDLEWARE SERVE ICON
+
+app.use(favicon(__dirname = './favicon.ico'))
+
+
 //MIDLEWARE LOG
-// We use it to see URL call in terminal
-app.use((req,res,next) => {
-    console.log(`URL: ${req.url}`)
-    next()
-})
+// We use it to see URL call in terminal and debug
+
+                                                        //Homemade version
+app.use(morgan('dev'))                                  /* app.use((req,res,next) => {
+                                                        console.log(`URL: ${req.url}`)
+                                                        next()
+                                                        }) */
+
 
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
@@ -44,5 +63,3 @@ app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://lo
 //    "scripts": {
 //    "start": "nodemon app.js" 
 //    },
-
-//1H38

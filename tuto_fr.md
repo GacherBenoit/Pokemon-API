@@ -25,3 +25,9 @@ ex:     app.get('/api/pokemons/:id', (req,res) => {
         const id = parseInt(req.params.id); 
         const pokemon = pokemons.find((pokemon)=> pokemon.id === id)
         res.json(pokemon)});
+
+ /////       MIDDLEWARE     /////
+
+ L'ordre d'exécution des middlewares est important.Si ont a un middleware pour les logs et un autre pour les erreurs, il faut bien entendus activer les logs en premiers.
+ Sinon ont ne logerais rien du tout. 
+ Quand ont fait appel aux middlewares, il faut donc bien réfléchir à l'ordre,car cela peut impacter le fonctionnement de l'application.
