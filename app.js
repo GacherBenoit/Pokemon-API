@@ -1,7 +1,7 @@
 
 const express = require('express')  // fetching express dependency with require keyword from node module folder
 let pokemons = require('./mock-pokemon');
-const helper = require('./helper.js');
+const {success} = require('./helper.js');
 
 const app = express(); // creating an instance of an express application
 
@@ -19,13 +19,13 @@ app.get('/api/pokemons/:id', (req,res) => {
 const id = parseInt(req.params.id); 
 const pokemon = pokemons.find((pokemon)=> pokemon.id === id)
 const message = 'un pokemon a bien été trouvé';
-res.json(helper.success(message,pokemon))
+res.json(success(message,pokemon))
 });
 
-//ENDPOINT TOTAL POKEMON COUNT
+//ENDPOINT POKEMONS LIST
 app.get('/api/pokemons', (req,res) => {
-    const pokemonCount = pokemons.length;
-    res.send(`Il y a ${pokemonCount} pokémons dans le pokédex, pour le moment`)
+    const message = 'Voici la liste de tout les pokémons dans le pokédex:'
+    res.json(success(message,pokemons))
 });
 
 app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
@@ -37,3 +37,5 @@ app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://lo
 //    "scripts": {
 //    "start": "nodemon app.js" 
 //    },
+
+//1H38
