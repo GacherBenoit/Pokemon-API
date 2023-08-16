@@ -18,3 +18,10 @@ Solution : Ont utilise la méthode parseInt
 
 - Exportation de module , module.export = [mon tableau ] ou {mon objet}
   importation de module, maVariable = require('./mon chemin')
+
+-Format JSON : au lieu de res.send() ont envoie au format json avec res.json(mon objet)
+
+ex:     app.get('/api/pokemons/:id', (req,res) => {
+        const id = parseInt(req.params.id); 
+        const pokemon = pokemons.find((pokemon)=> pokemon.id === id)
+        res.json(pokemon)});
