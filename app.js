@@ -14,6 +14,13 @@ app.get('/',(req,res) => res.send('Hello,Express! ')); // Define endpoint with g
 //  -req : request object corresponding to the request recieve  by the endpoint
 //  -res : response , object to send to the client
 
+//MIDLEWARE LOG
+// We use it to see URL call in terminal
+app.use((req,res,next) => {
+    console.log(`URL: ${req.url}`)
+    next()
+})
+
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
 const id = parseInt(req.params.id); 
