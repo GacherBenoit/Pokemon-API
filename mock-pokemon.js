@@ -1,4 +1,4 @@
-const pokemons = [
+module.exports = [
     {
         id:1,
         name:"Bulbizarre",

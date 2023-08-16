@@ -1,6 +1,10 @@
-import pokemon from './mock-pokemon';
+
 
 const express = require('express')  // fetching express dependency with require keyword from node module folder
+
+// Import Data
+let pokemons = require('./mock-pokemon');
+console.log(pokemons);
 
 const app = express(); // creating an instance of an express application
 const port = 3000 // Define a port 
@@ -13,8 +17,9 @@ app.get('/',(req,res) => res.send('Hello,Express 2 ! ')); // Define endpoint wit
 //  -res : response , object to send to the client
 
 app.get('/api/pokemons/:id', (req,res) => {
-const id = req.params.id;
-res.send('Hello amis bulbizarre')});
+const id = parseInt(req.params.id); 
+const pokemon = pokemons.find((pokemon)=> pokemon.id === id)
+res.send(`Vous avez demandé le pokémon ${pokemon.name}`)});
 
 app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
 
