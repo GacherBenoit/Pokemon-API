@@ -5,7 +5,7 @@ const express = require('express')
 let pokemons = require('./mock-pokemon');
 
 // Message module import with destructuring
-const {success} = require('./helper.js');
+const {success, getUniqueId} = require('./helper.js');
 
 // middleware morgan import
 const morgan=require('morgan');
@@ -53,6 +53,15 @@ app.get('/api/pokemons', (req,res) => {
     const message = 'Voici la liste de tout les pokémons dans le pokédex:'
     res.json(success(message,pokemons))
 });
+
+// ENDPOInT ADD POKEMON
+app.post('/api/pokemons', (req,res)=> {
+    const id= getUniqueId(pokemons);                                                                  // Define a id
+    const pokemonCreated = {...req.body, ...{id: id, created: new Date()}}          // Merge data recieve by request and add an an and a date
+    pokemons.push(pokemonCreated)                                                   
+    const message = `Le pokemon ${pokemonCreated.name} a bien été crée`
+    res.json(sucess(message,pokemonCreated))
+})
 
 app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
 
