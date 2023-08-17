@@ -66,7 +66,7 @@ app.get('/api/pokemons', (req,res) => {
 // We need to parse the Data with a middleware, the Data aren't reicieve in JSON format
 app.post('/api/pokemons', (req,res)=> {
     const id= getUniqueId(pokemons);                                                                  // Define a id
-    const pokemonCreated = {...req.body, ...{id: id, created: new Date()}}          // Merge data recieve by request and add an an and a date
+    const pokemonCreated = {...req.body, ...{id: id, created: new Date()}}          // Merge data recieve by request and add an id and a date
     pokemons.push(pokemonCreated)                                                   
     const message = `Le pokemon ${pokemonCreated.name} a bien été crée , le voici ${pokemonCreated.picture}`
     res.json(success(message,pokemonCreated))
@@ -81,6 +81,15 @@ app.put('/api/pokemons/:id', (req,res)=> {
     });
     const message = `Le pokemon ${pokemonUpdated} a bien été modifié`;
     res.json(success(message, pokemonUpdated));
+})
+
+// ENDPOINT DELETE A POKEMON
+app.delete('/api/pokemons/:id', (req,res) => {
+    const id = parseInt(req.params.id);
+    const pokemonToDelete=pokemons.find(pokemon => pokemon.id === id); // Find in pokemon array , pokemon who will be deleted to specify in message
+    pokemons.filter(pokemon =>pokemon.id !== id); // Filter and have a new array without the pokemon deleted (remember,filter method send a new array) 
+    const message = `Le ${pokemonToDelete.name} a bien été supprimé !`
+    res.json(success(message,pokemonToDelete));
 })
 
 
