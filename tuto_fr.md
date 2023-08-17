@@ -54,3 +54,7 @@ Pour modifier seulement une partie d'une ressource , il existe une opération ap
 Dans le cadre d'une API REST la méthode la plus fiable est la méthode PUT.
 Imaginons que deux clients veulent modifier la même ressource... 
 La méthode PUT va supprimer la ressource au complet pour la remplacer avec toute les nouvelles valeurs.
+
+/////ORM SEQUELIZE ///
+
+installer le driver pour mariaDB : npm install mariadb --save
