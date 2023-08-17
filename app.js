@@ -13,9 +13,13 @@ const morgan=require('morgan');
 // middleware bodyParser import
 const bodyParser = require('body-parser');
 
+// Sequelize import
+const Sequelize = require('sequelize');
+
 // Favicon
 const favicon = require('serve-favicon');
 
+// Express instance
 const app = express(); // creating an instance of an express application
 
 const port = 3000 // Define a port 
@@ -46,6 +50,26 @@ app.use(morgan('dev'))                                  /* app.use((req,res,next
 // Use to parse data recieve with HTPP in JSON 
 
 app.use(bodyParser.json())
+
+// SEQUELIZE INIT
+
+const sequelize = new Sequelize (
+    'pokedex',  // DB name
+    'root',  // userName of database (root by default on mariadb)
+    '', // password of Database
+    {
+        host : 'localhost', // host
+        dialect:'mariadb', // Driver use for sequelize
+        dialectOptions : {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    }
+)
+
+sequelize.authenticate()
+.then(_error => console.log('La connection a la base de données a bien été établie'))
+.catch(error => console.error(`impossible de se connecter a la base de donné ${error}`));
 
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
