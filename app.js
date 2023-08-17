@@ -50,6 +50,7 @@ app.use(bodyParser.json())
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
 const id = parseInt(req.params.id); 
+console.log(req.body)
 const pokemon = pokemons.find((pokemon)=> pokemon.id === id)    
 const message = 'un pokemon a bien été trouvé';
 res.json(success(message,pokemon))
@@ -70,6 +71,19 @@ app.post('/api/pokemons', (req,res)=> {
     const message = `Le pokemon ${pokemonCreated.name} a bien été crée , le voici ${pokemonCreated.picture}`
     res.json(success(message,pokemonCreated))
 })
+
+// ENDPOINT MODIFY POKEMON
+app.put('/api/pokemons/:id', (req,res)=> {
+    const id = parseInt(req.params.id);
+    const pokemonUpdated ={...req.body, id:id};
+    pokemons = pokemons.map(pokemon => {
+        return pokemon.id === id ? pokemonUpdated : pokemon;
+    });
+    const message = `Le pokemon ${pokemonUpdated} a bien été modifié`;
+    res.json(success(message, pokemonUpdated));
+})
+
+
 
 app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
 

@@ -26,13 +26,13 @@ ex:     app.get('/api/pokemons/:id', (req,res) => {
         const pokemon = pokemons.find((pokemon)=> pokemon.id === id)
         res.json(pokemon)});
 
- /////       MIDDLEWARE     /////
+                                                                /////       MIDDLEWARE     /////
 
  L'ordre d'exécution des middlewares est important.Si ont a un middleware pour les logs et un autre pour les erreurs, il faut bien entendus activer les logs en premiers.
  Sinon ont ne logerais rien du tout. 
  Quand ont fait appel aux middlewares, il faut donc bien réfléchir à l'ordre,car cela peut impacter le fonctionnement de l'application.
 
- //// REQUETES HTTP
+                                                                  //// REQUETES HTTP  ///////
 
  Les données qui transitent via le protocole 'htpp' le font sous forme de chaine de caractère.
  Ont travaille dans notre App , au format JSON.
@@ -46,3 +46,11 @@ ex:     app.get('/api/pokemons/:id', (req,res) => {
 
  // Format JSON:
  const userJSON = {"name":"John","age":33}                   ---------------------------->console.log(userJSON.age) // Affiche "33"
+
+
+                                                                //// Requete PATCH vs PUT //////
+
+Pour modifier seulement une partie d'une ressource , il existe une opération appellé PATCH.
+Dans le cadre d'une API REST la méthode la plus fiable est la méthode PUT.
+Imaginons que deux clients veulent modifier la même ressource... 
+La méthode PUT va supprimer la ressource au complet pour la remplacer avec toute les nouvelles valeurs.
