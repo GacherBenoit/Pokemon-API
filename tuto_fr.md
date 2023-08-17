@@ -31,3 +31,18 @@ ex:     app.get('/api/pokemons/:id', (req,res) => {
  L'ordre d'exécution des middlewares est important.Si ont a un middleware pour les logs et un autre pour les erreurs, il faut bien entendus activer les logs en premiers.
  Sinon ont ne logerais rien du tout. 
  Quand ont fait appel aux middlewares, il faut donc bien réfléchir à l'ordre,car cela peut impacter le fonctionnement de l'application.
+
+ //// REQUETES HTTP
+
+ Les données qui transitent via le protocole 'htpp' le font sous forme de chaine de caractère.
+ Ont travaille dans notre App , au format JSON.
+ Les données entrente doivent donc etre parsé pour les récupéré au format JSON.
+
+ ex:
+
+ // Chaine de caractères transitant par le protocole HTTP :
+ const userString = '{"name":"John", "age": 33}'             ---------------------------->console.log(userString.age) // Affiche "undefined"
+
+
+ // Format JSON:
+ const userJSON = {"name":"John","age":33}                   ---------------------------->console.log(userJSON.age) // Affiche "33"

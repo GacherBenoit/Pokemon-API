@@ -10,6 +10,9 @@ const {success, getUniqueId} = require('./helper.js');
 // middleware morgan import
 const morgan=require('morgan');
 
+// middleware bodyParser import
+const bodyParser = require('body-parser');
+
 // Favicon
 const favicon = require('serve-favicon');
 
@@ -39,11 +42,15 @@ app.use(morgan('dev'))                                  /* app.use((req,res,next
                                                         next()
                                                         }) */
 
+//MIDLEWARE BODY-PARSER
+// Use to parse data recieve with HTPP in JSON 
+
+app.use(bodyParser.json())
 
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
 const id = parseInt(req.params.id); 
-const pokemon = pokemons.find((pokemon)=> pokemon.id === id)
+const pokemon = pokemons.find((pokemon)=> pokemon.id === id)    
 const message = 'un pokemon a bien été trouvé';
 res.json(success(message,pokemon))
 });
@@ -54,13 +61,14 @@ app.get('/api/pokemons', (req,res) => {
     res.json(success(message,pokemons))
 });
 
-// ENDPOInT ADD POKEMON
+// ENDPOINT ADD POKEMON
+// We need to parse the Data with a middleware, the Data aren't reicieve in JSON format
 app.post('/api/pokemons', (req,res)=> {
     const id= getUniqueId(pokemons);                                                                  // Define a id
     const pokemonCreated = {...req.body, ...{id: id, created: new Date()}}          // Merge data recieve by request and add an an and a date
     pokemons.push(pokemonCreated)                                                   
-    const message = `Le pokemon ${pokemonCreated.name} a bien été crée`
-    res.json(sucess(message,pokemonCreated))
+    const message = `Le pokemon ${pokemonCreated.name} a bien été crée , le voici ${pokemonCreated.picture}`
+    res.json(success(message,pokemonCreated))
 })
 
 app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
