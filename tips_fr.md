@@ -1,5 +1,12 @@
  - Endpoint Express = app.METHODE(CHEMIN,GESTIONNAIRE(req,res)) ex: app.get('/api/pokemons/1', (req,res) => res.send('Hello amis bulbizarre'));
 
+
+/* app.get('/',(req,res) => res.send('Hello,Express! ')) // Définition d'un endpoint avec la méthode GET
+
+En premier paramètre ont spécifie l'URL , puis en deuxième nous avons les objets suivant :
+-req : L'objet request qui correspond a la requête reçue par le endpoint 
+-res : Response , l'objet envoyé au client
+
 - Objet req.params.id permet de recupere un paramètre de l'URL ex: 
 
 app.get('/api/pokemons/:id', (req,res) => {                                                    app.get('/api/pokemons/:id/:name', (req,res) => {
