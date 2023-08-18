@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        hp: {
+        hp: { 
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -33,6 +33,6 @@ module.exports = (sequelize, DataTypes) => {
     },  {
         timeStamps:true,                  // 3- Facultative parameter of define's method , the global parameters to configure the model
         createdAt: 'created',             // By default sequelize will automacily create 2 properties for every models : createrdAt and updatedAt
-        updateAt: false                   // Sequelize is flexible and authorize to configure this parameters
+        updateAt: false                   // Sequelize is flexible and authorize to configure this parameters.
     })
 }
