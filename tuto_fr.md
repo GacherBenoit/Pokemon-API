@@ -76,3 +76,10 @@ ex: module.exports = (sequelize, DataTypes) => {
 
 
 Ensuite il faut syncroniser les modèles avec la base de donnéee.Chaque modèle donnera donc une table en base de donné.
+
+ATTENTION  !!!!!!
+
+sequelize.sync({force:true}) 
+
+Cette commande va recrée et donc écraser la table existante en base de donnée. C'est actuellement ok pour le développement
+ mais a ne surtout pas oublier lorsque l'ont souhaite travailler en conservant les data de la BDD.

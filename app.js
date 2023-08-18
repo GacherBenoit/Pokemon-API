@@ -74,10 +74,26 @@ sequelize.authenticate()
 .then(_error => console.log('La connection a la base de données a bien été établie'))
 .catch(error => console.error(`impossible de se connecter a la base de donné ${error}`)); 
 
-const pokemon = PokemonModel(sequelize, DataTypes);        // Create an instance of pokemon model to create our table in db
+const Pokemon = PokemonModel(sequelize, DataTypes);        // Create an instance of pokemon model to create our table in db
 
-sequelize.sync({force:true})
-.then(_ => console.log('la base de donné "Pokedex" a bien été synchronisée')) // Syncronize our method with DB
+sequelize.sync({force:true})  // !!!! this option delete the table associate to every models , we lost data of table at every restart. Its ok for the de momment to work with fresh entity.
+.then(_ => 
+    {console.log('la base de donné "Pokedex" a bien été synchronisée')  // synchronize our method with DB
+
+    pokemons.map(pokemon => {         // Use Array to push in DB
+
+        Pokemon.create({                
+            name:pokemon.name,
+            hp: pokemon.hp,
+            cp: pokemon.cp,
+            picture: pokemon.picture,
+            type:pokemon.type.join()   // the type property is a string in the database but an array in the API, so the join method generates a string by concataining with a comma. Use split method in other way ( DB to API ) 
+          }).then(bulbizzare => console.log(bulbizzare.toJSON())) // We use then because create return a promise. Sequelize make a request to DB , wait a response and tell us if a pokemon was added to the right table.
+                                                                  // toJSON methos is recommand to show correctly informations of model's instance
+        })                                                       
+        })
+
+
 
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
