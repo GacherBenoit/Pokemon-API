@@ -127,7 +127,3 @@ app.listen(port,() => console.log(`Notre app Node esrt démarré sur : http://lo
 //    "scripts": {
 //    "start": "nodemon app.js" 
 //    },
-
-
-
-// 3H00
