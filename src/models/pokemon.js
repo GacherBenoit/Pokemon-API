@@ -6,7 +6,7 @@
 module.exports = (sequelize, DataTypes) => {   
     return sequelize.define('Pokemon' , {      // 1- Name of the model , here 'Pokemon'. Sequelize will create the table Pokemon and add a 's' to make the Pokemons entity
         id: {                                  // 2- Description of the model with all properties, all properties will be traduce in columns in our table Pokemons
-            types: DataTypes.INTEGER,          // For every properties, we define the Datatype and the others essentials attribute( primary key for id , allowNull ....)
+            type: DataTypes.INTEGER,          // For every properties, we define the Datatype and the others essentials attribute( primary key for id , allowNull ....)
             primaryKey: true,                  
             autoIncrement: true                
         },

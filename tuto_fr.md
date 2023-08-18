@@ -58,3 +58,21 @@ La méthode PUT va supprimer la ressource au complet pour la remplacer avec tout
 /////ORM SEQUELIZE ///
 
 installer le driver pour mariaDB : npm install mariadb --save
+
+Sequelize fonctionne en 2 étapes simples , en premiers ont déclare les modèle que l'ont veut utiliser.
+
+
+ex: module.exports = (sequelize, DataTypes) => {   
+    return sequelize.define('Pokemon' , {      
+        id: {                                  
+            types: DataTypes.INTEGER,          
+            primaryKey: true,                  
+            autoIncrement: true                
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }...
+
+
+Ensuite il faut syncroniser les modèles avec la base de donnéee.Chaque modèle donnera donc une table en base de donné.

@@ -4,6 +4,9 @@ const express = require('express')
 //Data
 let pokemons = require('./mock-pokemon');
 
+// import Pokemon Model
+const PokemonModel = require('./src/models/pokemon');
+
 // Message module import with destructuring
 const {success, getUniqueId} = require('./helper.js');
 
@@ -13,8 +16,8 @@ const morgan=require('morgan');
 // middleware bodyParser import
 const bodyParser = require('body-parser');
 
-// Sequelize import
-const Sequelize = require('sequelize');
+// Sequelize import with datatypes for models
+const {Sequelize, DataTypes} = require('sequelize');
 
 // Favicon
 const favicon = require('serve-favicon');
@@ -69,7 +72,12 @@ const sequelize = new Sequelize (
 
 sequelize.authenticate()
 .then(_error => console.log('La connection a la base de données a bien été établie'))
-.catch(error => console.error(`impossible de se connecter a la base de donné ${error}`));
+.catch(error => console.error(`impossible de se connecter a la base de donné ${error}`)); 
+
+const pokemon = PokemonModel(sequelize, DataTypes);        // Create an instance of pokemon model to create our table in db
+
+sequelize.sync({force:true})
+.then(_ => console.log('la base de donné "Pokedex" a bien été synchronisée')) // Syncronize our method with DB
 
 //ENDPOINT POKEMON BY ID
 app.get('/api/pokemons/:id', (req,res) => {
