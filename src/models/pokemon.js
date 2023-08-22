@@ -36,7 +36,8 @@ module.exports = (sequelize, DataTypes) => {
                 this.setDataValue('types', types.join())  // Now types property is set into a string to send in DB
             }
         }
-    },  {
+    },  
+    {
         timeStamps:true,                  // 3- Facultative parameter of define's method , the global parameters to configure the model
         createdAt: 'created',             // By default sequelize will automacily create 2 properties for every models : createrdAt and updatedAt
         updateAt: false                   // Sequelize is flexible and authorize to configure this parameters.
