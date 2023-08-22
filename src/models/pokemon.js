@@ -26,9 +26,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        type: {
+        types: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            get() {
+                return this.getDataValue('types').split(',')  //Now we get from BD types property with word split by coma in a array
+            },
+            set(types) {
+                this.setDataValue('types', types.join())  // Now types property is set into a string to send in DB
+            }
         }
     },  {
         timeStamps:true,                  // 3- Facultative parameter of define's method , the global parameters to configure the model

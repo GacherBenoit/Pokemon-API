@@ -32,7 +32,7 @@ const initDb = () => {
                 hp: pokemon.hp,
                 cp: pokemon.cp,
                 picture: pokemon.picture,
-                type:pokemon.type.join()   // the type property is a string in the database but an array in the API, so the join method generates a string by concataining with a comma. Use split method in other way ( DB to API ) 
+                types:pokemon.type/* .join()  */  // the type property is a string in the database but an array in the API, so the join method generates a string by concataining with a comma. Use split method in other way ( DB to API ) 
               }).then(bulbizzare => console.log(bulbizzare.toJSON())) // We use then because create return a promise. Sequelize make a request to DB , wait a response and tell us if a pokemon was added to the right table.
                                                                       // toJSON methos is recommand to show correctly informations of model's instance
             }) 

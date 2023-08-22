@@ -32,6 +32,7 @@ sequelize.initDb();
 //ENDPOINT
 require('./src/routes/findAllPokemons')(app)
 require('./src/routes/findPokemonByPk')(app)
+require('./src/routes/createPokemon')(app)
 
 app.listen(port,() => console.log(`Notre app Node est démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
 // To see modification and not cut every time the server we will use nodemon.

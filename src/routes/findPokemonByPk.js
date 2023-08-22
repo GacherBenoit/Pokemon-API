@@ -11,3 +11,5 @@ module.exports = (app) => {
     })
 })
 }
+
+// We dont need the parseInt method to get the id (req.params.id) , sequelize make the difference

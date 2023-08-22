@@ -90,3 +90,15 @@ sequelize.sync({force:true})
 
 Cette commande va recrée et donc écraser la table existante en base de donnée. C'est actuellement ok pour le développement
  mais a ne surtout pas oublier lorsque l'ont souhaite travailler en conservant les data de la BDD.
+
+
+
+                                                    //// GETTER /// SETTER ////
+
+Nous avons du paramétrer les getters et setters pour la propriété 'types' du model Pokememon:
+
+// Getter : Base de données -> API Rest
+"Plante, Poisson".split(',') // ["Plante","Poison"]
+
+// Setter : API Rest -> Base de données
+["Plante","Poison"].join()  // "Plante,poison"
