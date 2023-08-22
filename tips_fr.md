@@ -102,3 +102,13 @@ Nous avons du paramétrer les getters et setters pour la propriété 'types' du 
 
 // Setter : API Rest -> Base de données
 ["Plante","Poison"].join()  // "Plante,poison"
+
+
+
+                                                    /// STAUTS HTTP  ////
+
+CODE 1XX : L'information
+CODE 2xx: Le succès
+CODE 3xx: La redirection
+CODE 4xx: Erreur du client 
+CODE 5xx: Erreur du serveur

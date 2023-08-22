@@ -36,6 +36,12 @@ require('./src/routes/createPokemon')(app)
 require('./src/routes/updatePokemon')(app)
 require('./src/routes/deletePokemon')(app)
 
+//ERROR MESSAGES MANAGEMENT
+app.use(({res}) => {
+    const message = 'Impossible de trouver la ressource demandée ! Vous pouvez essayer une autre URL'
+    res.status(404).json({message})
+});
+
 app.listen(port,() => console.log(`Notre app Node est démarré sur : http://localhost:${port}`)); // Start API on port with listen method given by express
 // To see modification and not cut every time the server we will use nodemon.
 // Nodemon will execute our project in background process.

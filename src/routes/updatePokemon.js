@@ -8,12 +8,23 @@ module.exports = (app) => {
             where: {id: id}
         })
         .then(_=> {
-            Pokemon.findByPk(id).then(pokemon => {
+            return Pokemon.findByPk(id).then(pokemon => {    // We return the promise of findByPk method. Like this if we have an error with this method, we execute the next catch function
+                if(pokemon === null) {      
+                    const message = `Le pokémon demandé n/ n'exite pas. Réessayez avec un autre identifiant.`
+                    res.status(404).json({message}) 
+                }
                 const message = `Le Pokémon ${pokemon.name} a bien été modifié`
                 res.json({message, data:pokemon})
             })
+           /*  .catch(error => {
+                const message = `Le pokémons n/ n'as pas pu être modifié. Réessayez dans quelques instants`   // We can delete this part of code with the return of findByPk promise
+                res.status(500).json({message, data: error}) 
+              }) */
         })
-        
+        .catch(error => {
+            const message = `Le pokémons n/ n'as pas pu être modifié. Réessayez dans quelques instants`
+            res.status(500).json({message, data: error}) 
+          })
     })
 }
 
