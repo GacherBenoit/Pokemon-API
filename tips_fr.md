@@ -143,3 +143,20 @@ Dans noter route oncernant la création d'un pokémon :
             })
     
 Si Sequelize renvoie une erreur de validation , nous envoyons une erreur 400 ainsi que le message d'erreur définis dans le validateur ( data: error )
+
+
+
+                                                ////   QUERRY PARAMS ///
+
+
+Ce sont des paramètres que l'ont ajoute à nos endpoint pour faire plus de requêtes
+
+
+exemple pour récupéré uniquement les pokémons avec un nom donnée:
+
+- monsite.com/api/pokemon?name="Bulbizzare"
+
+Comment choisir qu'elle est le mieux , querry params (paramètre de requêtes) ou definir un nparamètre d'url ?
+
+Les paramètres d'url doivent etre identifié pour identifié une ressource spécifique. ('api/pokemon/:id')
+Les paramètre de erqupetes pour trier ou filtrer des ressources.('api/pokemon?name="Pikachu")
