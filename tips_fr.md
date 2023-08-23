@@ -143,3 +143,60 @@ Dans noter route oncernant la création d'un pokémon :
             })
     
 Si Sequelize renvoie une erreur de validation , nous envoyons une erreur 400 ainsi que le message d'erreur définis dans le validateur ( data: error )
+
+
+
+                                                ////   QUERRY PARAMS ///
+
+
+Ce sont des paramètres que l'ont ajoute à nos endpoint pour faire plus de requêtes
+
+
+exemple pour récupéré uniquement les pokémons avec un nom donnée:
+
+- monsite.com/api/pokemon?name="Bulbizzare"
+
+Comment choisir qu'elle est le mieux , querry params (paramètre de requêtes) ou definir un paramètre d'url ?
+
+Les paramètres d'url doivent etre identifié pour identifié une ressource spécifique. ('api/pokemon/:id')
+Les paramètre de erqupetes pour trier ou filtrer des ressources.('api/pokemon?name="Pikachu")
+
+
+                                            /// OPERATEUR SEQUELIZE ///
+
+
+Si ont veut permettre au client une recherche de pokémon par nom , en utilisant le endpoint de la méthode findAll,
+ont peut utiliser un paramètre de requête comme suit :
+
+
+app.get('/api/pokemons',(req,res) =>{                              
+      if(req.query.name) {     
+        console.log(req.query.name)                                        
+        const name = req.query.name;
+        return Pokemon.findAll({
+           where: {                                                                                                              
+               name : name                                              
+             }
+          })                    
+        .then(pokemons => {
+          const message = `Il y a ${pokemons.length} pokémons qui correspondent au terme de recherche ${name}.`
+          res.json({ message, data: pokemons })
+        })
+
+Le problème est que lors de la recherche , ont ne renverra au client le résultat qui correspondra strictement au nom.
+Pour pallier à ce problème, Sequelize met a notre disposition des opérateurs comme suit, l'opérateur like: 
+
+
+    app.get('/api/pokemons',(req,res) =>{                                  
+      if(req.query.name) {     
+        console.log(req.query.name)                                         
+        const name = req.query.name;
+        return Pokemon.findAll({
+           where: {                                                         
+             name: {                                                        
+               [Op.like]: `%${name}%`     // ICI NOTRE OPERATEUR SEQUALIZE LIKE                                         
+             }
+            } 
+          })            
+
+Ainsi , Sequilize renverra une liste de résultat contrairement a un seul et unique résultat strict.
