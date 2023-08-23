@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: {                          // uniqueness constraint with Sequelize
+                msg: 'Le nom est déja pris.'
+            },
             validate: {
                 notEmpty: { msg : 'Le nom de votre pokémon ne peut pas etre vide '}, // If client send a empty string,validators don't reconize input like null
                 notNull: { msg : 'Merci de fournir un nom à votre pokémon.' },
