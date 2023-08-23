@@ -12,23 +12,60 @@ module.exports = (sequelize, DataTypes) => {
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: { msg : 'Le nom de votre pokémon ne peut pas etre vide '}, // If client send a empty string,validators don't reconize input like null
+                notNull: { msg : 'Merci de fournir un nom à votre pokémon.' },
+                min: {
+                    args:[1],
+                    msg: 'Le nom de votre pokémon doit être une chaîne de caractère de minimum 1 caractère et au maximum 25 caractères'
+                },
+                max: {                                                                             
+                    args:[25],
+                    msg:'Le nom de votre pokémon doit être une chaîne de caractère de minimum 1 caractère et au maximum 25 caractères'
+                }      
+            }
         },
         hp: { 
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                isInt: { msg :' Utilisez uniquement des nombres entiers pour les points de vie'}, // Sequelize validators
-                notNull: { msg:'Les points de vie sont une propriété require'}      
+                isInt: { msg : 'Utilisez uniquement des nombres entiers pour les points de vie' }, // Sequelize validators
+                min: {
+                    args: [1],
+                    msg: 'Le nombre de point de vie doit etre compris entre 1 et 999.' 
+                },
+                max: {                                                                             // Validator for number a characters min and max
+                    args: [999],
+                    msg: 'Le nombre de point de vie doit etre compris entre 1 et 999.'
+                },
+                notNull: { msg : 'Les points de vie sont une propriété requise' },
+              
             }
         },
         cp: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                isInt: { msg : `Utilisez uniquement des nombres entiers pour les points d'attaque` }, // Sequelize validators
+                notNull: { msg : `Les points d'attaque sont une propriété requise` }, 
+                min: {
+                    args: [0],
+                    msg: `Les points d'attaque doivent être supérieurs ou égale à 0.`
+                },
+                max: {                                                                             // Validator for number a characters min and max
+                    args: [99],
+                    msg: `Les points d'attaque  de vie doit etre compris entre 0 et 99.`
+                }     
+            }
         },
         picture: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                isUrl: { msg : `Utilisez uniquement une Url valide pour l'image` }, // Sequelize validators
+                notNull: { msg : `L'image' est requise` }      
+            }
         },
         types: {
             type: DataTypes.STRING,

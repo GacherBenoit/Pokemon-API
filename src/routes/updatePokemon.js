@@ -25,6 +25,7 @@ module.exports = (app) => {
         })
         .catch(error => {
             if(error instanceof ValidationError) {
+                console.log(error)
                 return res.status(400).json({message: error.message, data: error})  //If we have a validation error with sequelize we return an error 400 and send the validator error message (data:error)
             }
             const message = `Le pokémons n/ n'as pas pu être modifié. Réessayez dans quelques instants`
