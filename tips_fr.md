@@ -112,3 +112,34 @@ CODE 2xx: Le succès
 CODE 3xx: La redirection
 CODE 4xx: Erreur du client 
 CODE 5xx: Erreur du serveur
+
+
+                                                    //// VALIDATEURS /////
+
+Les validateurs vont nous permettre de mettre de véritable règles de validations des données fournit par Sequelize.
+Les messages d'erreur seront donc affinés lorsque l'ont voudra ajouter ou modifié des données en DB.
+
+
+exemple dans notre models de l'entité Pokemon :
+
+
+    hp: { 
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                isInt: { msg :' Utilisez uniquement des nombres entiers pour les points de vie'}, // Sequelize validators
+                notNull: { msg:'Les points de vie sont une propriété require'}      
+            }
+        },
+
+Ont met en place des messages personnalisé au cas ou ont recoit une décimal plutot qu'un entier et au cas ou ont ne recoit rien pour la propriété des points de vie.
+
+                                                   
+Dans noter route oncernant la création d'un pokémon : 
+
+  .catch(error => {
+            if(error instanceof ValidationError) {
+                return res.status(400).json({message: error.message, data: error})  
+            })
+    
+Si Sequelize renvoie une erreur de validation , nous envoyons une erreur 400 ainsi que le message d'erreur définis dans le validateur ( data: error )
