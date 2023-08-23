@@ -1,7 +1,7 @@
 // Import Pokemon model
 const { Pokemon } = require('../db/sequelize');
 // Error validation of Sequelize
-const { ValidationError } = require('sequelize');
+const { ValidationError, UniqueConstraintError } = require('sequelize');
 
 module.exports = (app) => {
     app.post('/api/pokemons', (req,res) => {
@@ -13,6 +13,9 @@ module.exports = (app) => {
         .catch(error => {
             if(error instanceof ValidationError) {
                 return res.status(400).json({message: error.message, data: error})  //If we have a validation error with sequelize we return an error 400 and send the validator error message (data:error)
+            }
+            if(error instanceof UniqueConstraintError) { // If we have a uniqueness constraint error define for Name property
+                return res.status(400).json({ message: error.message, data:error})
             }
             const message = `Le pokémons n/ n'as pas pu être ajouté. Réessayez dans quelques instants`
             res.status(500).json({message, data: error}) 

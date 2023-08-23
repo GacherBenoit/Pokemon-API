@@ -28,6 +28,9 @@ module.exports = (app) => {
                 console.log(error)
                 return res.status(400).json({message: error.message, data: error})  //If we have a validation error with sequelize we return an error 400 and send the validator error message (data:error)
             }
+            if(error instanceof UniqueConstraintError) { // If we have a uniqueness constraint error define for Name property
+                return res.status(400).json({ message: error.message, data:error})
+            }
             const message = `Le pokémons n/ n'as pas pu être modifié. Réessayez dans quelques instants`
             res.status(500).json({message, data: error}) 
           })
