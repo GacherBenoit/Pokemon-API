@@ -13,7 +13,7 @@ module.exports = (app) => {
             return Pokemon.destroy({  // Return is used to factorized code 500 error , if we have one we the return will send the code execution to the next .catch
                 where: { id: pokemon.id }
             })
-            .then(_ => {
+            .then(_ => { 
                 const message = `Le pokémon avec l'identifiant n°${pokemonDeleted.id} a bien été supprimé`
                 res.json({message , data: pokemonDeleted})
             })

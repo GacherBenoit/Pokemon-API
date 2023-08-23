@@ -37,15 +37,6 @@ module.exports = [
     },
     {
         id:5,
-        name:"Aspicot",
-        hp: 21,
-        cp: 5,
-        picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/010.png",
-        type:["Insecte"],
-        created: new Date()
-    },
-    {
-        id:6,
         name:"Papilusion",
         hp: 23,
         cp: 5,
@@ -54,7 +45,7 @@ module.exports = [
         created: new Date()
     },
     {
-        id:7,
+        id:6,
         name:"Chenipan",
         hp: 24,
         cp: 5,
@@ -63,7 +54,7 @@ module.exports = [
         created: new Date()
     },
     {
-        id:8,
+        id:7,
         name:"Gargargnan",
         hp: 29,
         cp: 5,
@@ -72,7 +63,7 @@ module.exports = [
         created: new Date()
     },
     {
-        id:9,
+        id:8,
         name:"Roucool",
         hp: 26,
         cp: 9,
@@ -81,7 +72,7 @@ module.exports = [
         created: new Date()
     },
     {
-        id:10,
+        id:9,
         name:"Rattata",
         hp: 26,
         cp: 7,
