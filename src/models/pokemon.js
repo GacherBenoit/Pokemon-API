@@ -1,3 +1,6 @@
+//We define a valid types array for Types properties and check it in custom validator
+const validTypes= ['Plante','Poison','Feu','Eau','Insecte','Vol','Normal','Electrik','Fée','Souris','Oiseau'];
+
 // We export function with two parameters
 // Sequelize , it's a object with define properties to declare a new model
 // Datatype to define the type of data for every properties of the model 
@@ -16,14 +19,10 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 notEmpty: { msg : 'Le nom de votre pokémon ne peut pas etre vide '}, // If client send a empty string,validators don't reconize input like null
                 notNull: { msg : 'Merci de fournir un nom à votre pokémon.' },
-                min: {
-                    args:[1],
+                len: {
+                    args:[1,25],
                     msg: 'Le nom de votre pokémon doit être une chaîne de caractère de minimum 1 caractère et au maximum 25 caractères'
                 },
-                max: {                                                                             
-                    args:[25],
-                    msg:'Le nom de votre pokémon doit être une chaîne de caractère de minimum 1 caractère et au maximum 25 caractères'
-                }      
             }
         },
         hp: { 
@@ -75,6 +74,29 @@ module.exports = (sequelize, DataTypes) => {
             },
             set(types) {
                 this.setDataValue('types', types.join())  // Now types property is set into a string to send in DB
+            },
+
+             // We make a custom validator
+             // Make a function call isTypesValid or customValidator ,as you wish
+             // Value parameters who correspond of the types value in DB whithout take into account setters and getters
+             // Sequelize transmits to validator bully value , without treatment of setters and getters
+             // So, thath's why we use again split method 
+
+            validate: {                                   
+                isTypesValid(value) {                     
+                    if(!value) {                                                                                 
+                        throw new Error('Un pokemon ne peux pas avoir plus de trois types')
+                    }
+                    if(value.split(',').length > 3) {
+                        throw new Error('Un pokemon ne peux pas avoir plus de trois types') // Sequelize can return to client custom message
+                    }
+                    value.split(',').forEach(type => {
+                        if (!validTypes.includes(type)) {  // If value don't correspond of some value define in validTypes array we return an error
+                            throw new Error(`Le type de pokémon doit appartenir à la liste suivante : ${validTypes}`);
+                        }                                                                        
+                    });
+                    
+                }
             }
         }
     },  
