@@ -39,6 +39,68 @@ ex:     app.get('/api/pokemons/:id', (req,res) => {
  Sinon ont ne logerais rien du tout. 
  Quand ont fait appel aux middlewares, il faut donc bien réfléchir à l'ordre,car cela peut impacter le fonctionnement de l'application.
 
+
+                                                                  //// CREER UN MODEL (user)  ///////
+
+Je crée mon fichier user.js dans mons dossier model: 
+
+module.exports = (sequelize, DataTypes) => {
+    return sequelize.define('User', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            unique: {    // Contrainte d'unicité                   
+                msg: 'Le nom est déja pris.'
+            }
+        },
+        password: {
+            type: DataTypes.STRING
+        }
+    })
+}
+
+  J'importe mon model dans le fichier de Sequelize :   const UserModel = require('../models/user');
+  Et je configure la connection a ma DB :
+
+  const sequelize = new Sequelize (
+    'pokedex',  // DB name
+    'root',  // userName of database (root by default on mariadb)
+    '', // password of Database
+    {
+        host : 'localhost', // host
+        dialect:'mariadb', // Driver use for sequelize
+        dialectOptions : {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    }
+)
+const User = UserModel(sequelize, DataTypes);        // Create an instance of user model to create our table in db
+
+Si neccessaire de remplir l'entité crée ont peut ensuite ajouter du contenus :
+
+const initDb = () => {
+    sequelize.sync({force:true})  // !!!! this option delete the table associate to every models , we lost data of table at every restart. Its ok for the de momment to work with fresh entity.
+    .then(_ => {  
+        User.create({
+            username:'pikachu',
+            password:'pikachu'
+        })
+        .then(user => console.log(user.toJSON()))
+        
+            console.log('la base de donné "Pokedex" a bien été synchronisée')  // synchronize our method with DB                                                      
+            })
+    }
+module.exports = {
+    initDb, User
+}      
+
+
+
                                                                   //// REQUETES HTTP  ///////
 
  Les données qui transitent via le protocole 'htpp' le font sous forme de chaine de caractère.
@@ -200,3 +262,67 @@ Pour pallier à ce problème, Sequelize met a notre disposition des opérateurs 
           })            
 
 Ainsi , Sequilize renverra une liste de résultat contrairement a un seul et unique résultat strict.
+
+
+                                  ///AUTHENTIFICATION ///
+
+Nous avons besoin d'un endpoint dédié a cette tache.
+Il faut encrypter le MDP qui sera sauvegardé et sécurisé l'échange des données.
+Nous devons fournir un identifiant unique et un mot de passe.
+Il faudra aussi sécuriser l'échange des donnés via l'utilisation de token JWT
+
+Pour crypter sous forme de Hash le MDP nous utiliserons bcrypt afin que ce dernier n'apparaisse pas en DB.
+
+Ont passe donc de :           User.create({
+                              username:'pikachu',
+                              password:'pikachu'
+                              })
+                              .then(user => console.log(user.toJSON()))
+ A:
+                           
+bcrypt.hash('pikachu',10)
+        .then(hash => User.create({ username:'pikachu', password:hash}))
+        .then(user => console.log(user.toJSON()))
+
+La méthode hash prends 2 paramètres: 
+-Le mot de passe ici en dur (pikachu)
+-Le salt Rounds qui est le temps necessaire pour hacher correctement de mdp
+
+
+
+            //////////////////// JWT //////////////////:
+
+    On va générer un token différent pour chaque utilisateur 
+    Ont va utiliser une clef secrète (chaine de caractère) pour renforcer la sécurité du JWT
+    Une date de validité pour le jeton
+    Lorsque le jeton est périmé , l'utilisateur ne pourra plus s'autentifier
+
+
+    Ont crée un toke comme suis avec la méthode sign qui prend 3 paramètres :
+
+     const token = jwt.sign(  
+                        { userId: user.id }, // 1er param
+                        privateKey,          // 2ème param      
+                        { expireIn: '24h'}   // 3ème param
+                    )
+
+Premier paramètre : Payload (Contenu du JWT) : C'est un objet JavaScript ou un Buffer qui représente le contenu que vous souhaitez stocker dans le JWT. Il contient généralement des informations sur l'utilisateur ou des métadonnées.
+
+Deuxième paramètre : Clé secrète : Une chaîne de caractères (ou un Buffer) utilisée pour signer le JWT. Cette clé doit rester secrète, car elle est utilisée pour vérifier l'intégrité du token lors de sa validation. Assurez-vous de bien protéger cette clé.
+
+Troisième paramètre : ptions : Un objet contenant des options pour personnaliser le comportement du JWT. Cela peut inclure des paramètres tels que l'algorithme de signature, la durée de validité du token, etc. Parmi les options courantes, on trouve :
+
+algorithm: L'algorithme de hachage utilisé pour signer le JWT (par exemple, 'HS256' pour HMAC SHA-256).
+expiresIn: La durée de validité du JWT sous forme de chaîne, par exemple '1h' pour une heure.
+issuer: L'émetteur du JWT, généralement une URL ou un nom.
+subject: Le sujet du JWT, généralement l'identifiant de l'utilisateur.
+audience: Le destinataire prévu du JWT.
+notBefore: L'heure avant laquelle le JWT ne doit pas être accepté.
+jwtid: L'identifiant unique du JWT.
+
+
+// A chaque utilisation de l'api de la part du client auprès d'un endpoit , nous allons devoir extraire le jeton jwt de l'entête de la requête.
+En fonction de la validité de ce dernier, nous retournerons soit les données demandé soit un refus.
+Pour cela nous allons utiliser un midleware.
+
+Voir fichier auth.js

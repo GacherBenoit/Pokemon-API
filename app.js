@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 // Sequelize
 const sequelize = require('./src/db/sequelize')
+//dotEnv
+const dotenv = require('dotenv');
+dotenv.config()
 
 
 // Express instance
@@ -35,6 +38,7 @@ require('./src/routes/findPokemonByPk')(app)
 require('./src/routes/createPokemon')(app)
 require('./src/routes/updatePokemon')(app)
 require('./src/routes/deletePokemon')(app)
+require('./src/routes/login')(app)
 
 //ERROR MESSAGES MANAGEMENT
 app.use(({res}) => {

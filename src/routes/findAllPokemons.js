@@ -2,10 +2,12 @@
 const { Pokemon } = require('../db/sequelize');
 // Import sequelize operator
 const { Op } = require('sequelize');
+// Import Auth
+const auth =require('../auth/auth')
 
-
-module.exports = (app) => {                                    // Export function who take in parameter all apllication.With this we can separate route simpliest and in different modules
-    app.get('/api/pokemons',(req,res) =>{                      // We use findAndCount method who return a promise with all pokemons in DB
+ // Export function who take in parameter all apllication.With this we can separate route simpliest and in different modules
+module.exports = (app) => {                                   
+    app.get('/api/pokemons',auth,(req,res) =>{                // We just add auth like this , magic of middleware !!! Express accept middleware in second argument    
       if(req.query.name) {                                     // We extract name parameter with req.query and use if to separate two cases                                        
         const name = req.query.name;
         const limit = parseInt(req.query.limit)|| 5            // Need to parse for not send a string for SQL resquest and define at 5 if we don't have parameters by client
@@ -14,7 +16,7 @@ module.exports = (app) => {                                    // Export functio
           const message = 'Le terme de la recherche doit contenir au moins 2 caractère.'
           return res.status(400).json({message})
         }
-        return Pokemon.findAndCountAll({
+        return Pokemon.findAndCountAll({                       // We use findAndCount method who return a promise with all pokemons in DB
            where: {                                            // We use sequilize operator to return a list instead a strict equality if we used previous method( where: {name:name})
              name: {                                           // name is pokemon's model property
         [Op.like]: `%${name}%`                                 // name is our search's criterion
@@ -29,7 +31,7 @@ module.exports = (app) => {                                    // Export functio
         })
       }else {
         Pokemon.findAll(
-          {order: [['name', 'ASC']]},
+          {order: [['name', 'ASC']]},                     
         )                                                  
           .then(pokemons => {                                              
             const message = 'La liste des pokémons à bien été récupéré.'   
