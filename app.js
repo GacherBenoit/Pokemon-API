@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 // Sequelize
 const sequelize = require('./src/db/sequelize')
+//dotEnv
+const dotenv = require('dotenv');
+dotenv.config()
 
 
 // Express instance

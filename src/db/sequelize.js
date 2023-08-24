@@ -15,7 +15,7 @@ const sequelize = new Sequelize (
     'root',  // userName of database (root by default on mariadb)
     '', // password of Database
     {
-        host : 'localhost', // host
+        host : process.env.host, // host
         dialect:'mariadb', // Driver use for sequelize
         dialectOptions : {
             timezone: 'Etc/GMT-2'

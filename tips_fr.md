@@ -269,6 +269,7 @@ Ainsi , Sequilize renverra une liste de résultat contrairement a un seul et uni
 Nous avons besoin d'un endpoint dédié a cette tache.
 Il faut encrypter le MDP qui sera sauvegardé et sécurisé l'échange des données.
 Nous devons fournir un identifiant unique et un mot de passe.
+Il faudra aussi sécuriser l'échange des donnés via l'utilisation de token JWT
 
 Pour crypter sous forme de Hash le MDP nous utiliserons bcrypt afin que ce dernier n'apparaisse pas en DB.
 
@@ -286,3 +287,42 @@ bcrypt.hash('pikachu',10)
 La méthode hash prends 2 paramètres: 
 -Le mot de passe ici en dur (pikachu)
 -Le salt Rounds qui est le temps necessaire pour hacher correctement de mdp
+
+
+
+            //////////////////// JWT //////////////////:
+
+    On va générer un token différent pour chaque utilisateur 
+    Ont va utiliser une clef secrète (chaine de caractère) pour renforcer la sécurité du JWT
+    Une date de validité pour le jeton
+    Lorsque le jeton est périmé , l'utilisateur ne pourra plus s'autentifier
+
+
+    Ont crée un toke comme suis avec la méthode sign qui prend 3 paramètres :
+
+     const token = jwt.sign(  
+                        { userId: user.id }, // 1er param
+                        privateKey,          // 2ème param      
+                        { expireIn: '24h'}   // 3ème param
+                    )
+
+Premier paramètre : Payload (Contenu du JWT) : C'est un objet JavaScript ou un Buffer qui représente le contenu que vous souhaitez stocker dans le JWT. Il contient généralement des informations sur l'utilisateur ou des métadonnées.
+
+Deuxième paramètre : Clé secrète : Une chaîne de caractères (ou un Buffer) utilisée pour signer le JWT. Cette clé doit rester secrète, car elle est utilisée pour vérifier l'intégrité du token lors de sa validation. Assurez-vous de bien protéger cette clé.
+
+Troisième paramètre : ptions : Un objet contenant des options pour personnaliser le comportement du JWT. Cela peut inclure des paramètres tels que l'algorithme de signature, la durée de validité du token, etc. Parmi les options courantes, on trouve :
+
+algorithm: L'algorithme de hachage utilisé pour signer le JWT (par exemple, 'HS256' pour HMAC SHA-256).
+expiresIn: La durée de validité du JWT sous forme de chaîne, par exemple '1h' pour une heure.
+issuer: L'émetteur du JWT, généralement une URL ou un nom.
+subject: Le sujet du JWT, généralement l'identifiant de l'utilisateur.
+audience: Le destinataire prévu du JWT.
+notBefore: L'heure avant laquelle le JWT ne doit pas être accepté.
+jwtid: L'identifiant unique du JWT.
+
+
+// A chaque utilisation de l'api de la part du client auprès d'un endpoit , nous allons devoir extraire le jeton jwt de l'entête de la requête.
+En fonction de la validité de ce dernier, nous retournerons soit les données demandé soit un refus.
+Pour cela nous allons utiliser un midleware.
+
+Voir fichier auth.js

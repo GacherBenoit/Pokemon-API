@@ -2,6 +2,12 @@
 const { User } = require('../db/sequelize');
 // Import Bcrypt
 const bcrypt= require('bcrypt');
+// Import JWT
+const jwt = require('jsonwebtoken');
+// Import privateKey
+const privateKey = require('../auth/private_key')
+
+
 
 module.exports = (app) => {
     app.post('/api/login', (req,res) => {
@@ -22,8 +28,16 @@ module.exports = (app) => {
                         const message = `Le mot de passe est invalide`;
                         return res.status(401).json({message})
                     }
+
+                    // JWT
+                    const token = jwt.sign(  // We generate a token with sign method of jsonwebtoken module , this method need 3 parameters:
+                        { userId: user.id }, // Payload : Object who represent content content you want to store in the JWT (users infos or metadata)
+                        privateKey,          // Secret Key : String use to sign a and check token integrity , must be hiddent     
+                        { expiresIn: '24h'}   // Options : parameters like expiry, hours before be accepted and others...
+                    )
+
                     const message = `L'utilisateur est connecté'`; // If the username and password pass the two previous conditions, we send the success message with the data
-                    return res.json({message, data: user})
+                    return res.json({message, data: user, token}) // We add token to data send by user
                 })
                
             })
