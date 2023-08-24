@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const privateKey = require('./private_key')
 
 module.exports = (req, res, next) => {
-    const authorizationHeader = req.headers.authorization// We get HTTP Header, the JWT send by client will transit inside
+    const authorizationHeader = req.headers.authorization // We get HTTP Header, the JWT send by client will transit inside
     if(!authorizationHeader) {      // We check if the JWT is provided
         const message = `Vous n'avez pas fourni de jeton d'authentification valide.Ajoutez-en un dans l'en-tête de la requête.`
         return res.status(401).json({message})

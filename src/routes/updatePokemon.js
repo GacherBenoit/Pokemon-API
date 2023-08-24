@@ -18,10 +18,6 @@ module.exports = (app) => {
                 const message = `Le Pokémon ${pokemon.name} a bien été modifié`
                 res.json({message, data:pokemon})
             })
-           /*  .catch(error => {
-                const message = `Le pokémons n/ n'as pas pu être modifié. Réessayez dans quelques instants`   // We can delete this part of code with the return of findByPk promise
-                res.status(500).json({message, data: error}) 
-              }) */
         })
         .catch(error => {
             if(error instanceof ValidationError) {
