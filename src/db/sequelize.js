@@ -5,8 +5,11 @@ const pokemons = require('./mock-pokemon');
 // import Pokemon Model
 const PokemonModel = require('./../models/pokemon');
 const UserModel = require('../models/user');
-// SEQUELIZE INIT
+//import BCRYPT
+const bcrypt = require('bcrypt');
 
+
+// SEQUELIZE INIT
 const sequelize = new Sequelize (
     'pokedex',  // DB name
     'root',  // userName of database (root by default on mariadb)
@@ -27,6 +30,7 @@ const User = UserModel(sequelize, DataTypes);        // Create an instance of us
 const initDb = () => {
     sequelize.sync({force:true})  // !!!! this option delete the table associate to every models , we lost data of table at every restart. Its ok for the de momment to work with fresh entity.
     .then(_ => {
+
         pokemons.map(pokemon => {         // Use Array to push in DB
             Pokemon.create({                
                 name:pokemon.name,
@@ -37,17 +41,18 @@ const initDb = () => {
               }).then(bulbizzare => console.log(bulbizzare.toJSON())) // We use then because create return a promise. Sequelize make a request to DB , wait a response and tell us if a pokemon was added to the right table.
                                                                       // toJSON method is recommand to show correctly informations of model's instance
             })
-            
-        User.create({
-            username:'pikachu',
-            password:'pikachu'
-        })
-        .then(user => console.log(user.toJSON()))
+        
+            bcrypt.hash('pikachu',10) // Hash method take 2 parameters , first one the password and the salt rounds in second parameters
+            .then(hash => User.create({ username:'pikachu', password:hash}))
+            .then(user => console.log(user.toJSON()))
         
             console.log('la base de donné "Pokedex" a bien été synchronisée')  // synchronize our method with DB                                                      
             })
     }
+
+
+
 module.exports = {
-    initDb, Pokemon
+    initDb, Pokemon, User
 }      
 

@@ -96,7 +96,7 @@ const initDb = () => {
             })
     }
 module.exports = {
-    initDb, Pokemon
+    initDb, User
 }      
 
 
@@ -269,3 +269,20 @@ Ainsi , Sequilize renverra une liste de résultat contrairement a un seul et uni
 Nous avons besoin d'un endpoint dédié a cette tache.
 Il faut encrypter le MDP qui sera sauvegardé et sécurisé l'échange des données.
 Nous devons fournir un identifiant unique et un mot de passe.
+
+Pour crypter sous forme de Hash le MDP nous utiliserons bcrypt afin que ce dernier n'apparaisse pas en DB.
+
+Ont passe donc de :           User.create({
+                              username:'pikachu',
+                              password:'pikachu'
+                              })
+                              .then(user => console.log(user.toJSON()))
+ A:
+                           
+bcrypt.hash('pikachu',10)
+        .then(hash => User.create({ username:'pikachu', password:hash}))
+        .then(user => console.log(user.toJSON()))
+
+La méthode hash prends 2 paramètres: 
+-Le mot de passe ici en dur (pikachu)
+-Le salt Rounds qui est le temps necessaire pour hacher correctement de mdp
