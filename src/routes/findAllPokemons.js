@@ -29,7 +29,7 @@ module.exports = (app) => {                                    // Export functio
         })
       }else {
         Pokemon.findAll(
-          {order: [['name', 'ASC']]},
+          {order: [['name', 'ASC']]},                     
         )                                                  
           .then(pokemons => {                                              
             const message = 'La liste des pokémons à bien été récupéré.'   

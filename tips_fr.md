@@ -39,6 +39,68 @@ ex:     app.get('/api/pokemons/:id', (req,res) => {
  Sinon ont ne logerais rien du tout. 
  Quand ont fait appel aux middlewares, il faut donc bien réfléchir à l'ordre,car cela peut impacter le fonctionnement de l'application.
 
+
+                                                                  //// CREER UN MODEL (user)  ///////
+
+Je crée mon fichier user.js dans mons dossier model: 
+
+module.exports = (sequelize, DataTypes) => {
+    return sequelize.define('User', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            unique: {    // Contrainte d'unicité                   
+                msg: 'Le nom est déja pris.'
+            }
+        },
+        password: {
+            type: DataTypes.STRING
+        }
+    })
+}
+
+  J'importe mon model dans le fichier de Sequelize :   const UserModel = require('../models/user');
+  Et je configure la connection a ma DB :
+
+  const sequelize = new Sequelize (
+    'pokedex',  // DB name
+    'root',  // userName of database (root by default on mariadb)
+    '', // password of Database
+    {
+        host : 'localhost', // host
+        dialect:'mariadb', // Driver use for sequelize
+        dialectOptions : {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    }
+)
+const User = UserModel(sequelize, DataTypes);        // Create an instance of user model to create our table in db
+
+Si neccessaire de remplir l'entité crée ont peut ensuite ajouter du contenus :
+
+const initDb = () => {
+    sequelize.sync({force:true})  // !!!! this option delete the table associate to every models , we lost data of table at every restart. Its ok for the de momment to work with fresh entity.
+    .then(_ => {  
+        User.create({
+            username:'pikachu',
+            password:'pikachu'
+        })
+        .then(user => console.log(user.toJSON()))
+        
+            console.log('la base de donné "Pokedex" a bien été synchronisée')  // synchronize our method with DB                                                      
+            })
+    }
+module.exports = {
+    initDb, Pokemon
+}      
+
+
+
                                                                   //// REQUETES HTTP  ///////
 
  Les données qui transitent via le protocole 'htpp' le font sous forme de chaine de caractère.
@@ -200,3 +262,10 @@ Pour pallier à ce problème, Sequelize met a notre disposition des opérateurs 
           })            
 
 Ainsi , Sequilize renverra une liste de résultat contrairement a un seul et unique résultat strict.
+
+
+                                  ///AUTHENTIFICATION ///
+
+Nous avons besoin d'un endpoint dédié a cette tache.
+Il faut encrypter le MDP qui sera sauvegardé et sécurisé l'échange des données.
+Nous devons fournir un identifiant unique et un mot de passe.
