@@ -35,7 +35,6 @@ module.exports = (app) => {
                         privateKey,          // Secret Key : String use to sign a and check token integrity , must be hiddent     
                         { expiresIn: '24h'}   // Options : parameters like expiry, hours before be accepted and others...
                     )
-
                     const message = `L'utilisateur est connecté'`; // If the username and password pass the two previous conditions, we send the success message with the data
                     return res.json({message, data: user, token}) // We add token to data send by user
                 })

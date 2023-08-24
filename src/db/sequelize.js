@@ -42,8 +42,8 @@ const initDb = () => {
                                                                       // toJSON method is recommand to show correctly informations of model's instance
             })
         
-            bcrypt.hash('pikachu',10) // Hash method take 2 parameters , first one the password and the salt rounds in second parameters
-            .then(hash => User.create({ username:'pikachu', password:hash}))
+            bcrypt.hash(process.env.password,10) // Hash method take 2 parameters , first one the password and the salt rounds in second parameters
+            .then(hash => User.create({ username:process.env.username, password:hash}))
             .then(user => console.log(user.toJSON()))
         
             console.log('la base de donné "Pokedex" a bien été synchronisée')  // synchronize our method with DB                                                      
