@@ -8,7 +8,7 @@ Courte description de votre projet en une ou deux phrases.
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [#Points de terminaison](#points de terminaison)
+- [Points de terminaison](#points-de-terminaison)
 - [Contribuer](#contribuer)
 - [Licence](#licence)
 
