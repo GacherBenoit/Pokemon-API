@@ -92,7 +92,7 @@ Exemple de requête :
 
 Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. 
 
-Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
+Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessous. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
 
 `Authorization: Bearer votreTokenJWT`
 
