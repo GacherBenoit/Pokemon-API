@@ -1,6 +1,8 @@
 # API-POKEMONS
 [![Node.js](https://img.shields.io/badge/Node.js-v20.2.0-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/npm/v/express.svg?logo=express)](https://www.npmjs.com/package/express)
+[![Express](https://img.shields.io/npm/v/express.svg?logo=express&label=express)](https://www.npmjs.com/package/express)
+
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/npm)
 [![Nodemon](https://img.shields.io/badge/nodemon-v3.0.1-blue.svg?logo=nodemon)](https://www.npmjs.com/package/nodemon)
 
