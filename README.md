@@ -19,7 +19,7 @@ API Rest sur la ressources des Pokémons.
 - [Points de terminaison](#points-de-terminaison)
 
 
-## Aperçu :eye:
+## Aperçu
 
 Le projet est une API Rest développée sous NodeJs avec Express et l'ORM Sequelize.
 
