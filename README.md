@@ -1,6 +1,12 @@
 # API-POKEMONS
 [![Node.js](https://img.shields.io/badge/Node.js-v20.2.0-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-v4.18.2-blue.svg)](https://expressjs.com/)
+[![Npm](https://img.shields.io/npm/v/nom-de-la-dependance.svg)](https://www.npmjs.com/package/npm)
+[![Nodemon](https://img.shields.io/npm/v/nodemon.svg)](https://www.npmjs.com/package/nodemon)
+[![Bcrypt](https://img.shields.io/npm/v/bcrypt.svg)](https://www.npmjs.com/package/bcrypt)
+[![Serve-Favicon](https://img.shields.io/npm/v/serve-favicon.svg)](https://www.npmjs.com/package/serve-favicon)
+[![Mariadb](https://img.shields.io/npm/v/mariadb.svg)](https://www.npmjs.com/package/mariadb)
+[![Sequelize](https://img.shields.io/npm/v/sequelize.svg)](https://www.npmjs.com/package/sequelize)
 
 API Rest sur la ressources des Pokémons.
 
@@ -64,6 +70,7 @@ Dans ce projet nous avons définis dans le fichier .env:
 
 -Le mot de passe de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'password'  
 
+Sequilize est ici configuré pour utiliser le système de gestion de base de données(SGBD) MariaDB, vous pourrez changer ceci dans le fichier `Sequilize.js.` 
 
 Lancer le projet : Exécuter le script dans le terminal `npm start`.  Un message dans le terminal vous indiquera si la base de donnée à bien été synchronisé.
 En cas de succès cela exporteras les tables et leurs données , un utilisateur et quelques pokémons.
