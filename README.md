@@ -37,7 +37,9 @@ Installez les Dépendances : Utilisez la commande suivante pour installer toutes
 
 "npm install"
 
-Configuration de l'Environnement : Assurez-vous d'avoir un fichier .env à la racine de votre projet pour définir vos variables d'environnement, notamment les informations sensibles comme les clés secrètes pour JWT et les paramètres de base de données. Dans ce projet nous avons définis dans le fichier .env:
+Configuration de l'Environnement : Assurez-vous d'avoir un fichier .env à la racine de votre projet pour définir vos variables d'environnement, notamment les informations sensibles comme la clé secrète pour la génération de token JWT et les paramètres de base de données. 
+
+Dans ce projet nous avons définis dans le fichier .env:
 
 -La clé privé utilisé pour la génération de Token JWT. Variable définis dans le projet : 'private_key' 
 
@@ -77,6 +79,57 @@ GET /api/pokemons?limit=10
 Authorization: Bearer votreTokenJWT
 
 Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
+
+Voici la liste des points de terminaison:
+
+Se Connecter et Récupérer un Token JWT
+
+Méthode HTTP : POST
+Endpoint : /api/login
+Paramètres du Corps de la Requête
+
+Envoyez les informations d'identification (nom d'utilisateur et mot de passe) dans le corps de la requête au format JSON.
+
+Créer un Nouveau Pokémon
+
+Méthode HTTP : POST
+Endpoint : /api/pokemons
+Paramètres du Corps de la Requête
+
+Envoyez les détails du nouveau Pokémon dans le corps de la requête au format JSON.
+
+Récupérer un Pokémon par son ID
+
+Méthode HTTP : GET
+Endpoint : /api/pokemons/:id
+Paramètres de la Requête
+
+L'ID du Pokémon est spécifié dans l'URL.
+
+Récupérer une Liste de Pokémon
+
+Méthode HTTP : GET
+Endpoint : /api/pokemons
+Query Params
+
+limit : Limite le nombre de Pokémon retournés.
+name : Filtre les Pokémon par nom (facultatif).
+Supprimer un Pokémon
+
+Méthode HTTP : DELETE
+Endpoint : /api/pokemons/:id
+Paramètres de la Requête
+
+L'ID du Pokémon à supprimer est spécifié dans l'URL.
+
+Modifier un Pokémon
+
+Méthode HTTP : PUT
+Endpoint : /api/pokemons/:id
+Paramètres du Corps de la Requête
+
+Envoyez les détails mis à jour du Pokémon dans le corps de la requête au format JSON.
+
 
 ## Contribuer
 
