@@ -67,10 +67,10 @@ Utilisez une requête POST pour vous connecter et obtenir un token JWT à partir
 
 POST /api/login
 
-`{                                    `
-`"username": "votreNomUtilisateur",   `
-`"password": "votreMotDePasse"        `
-`}                                    `
+`{`
+`"username": "votreNomUtilisateur",`
+`"password": "votreMotDePasse"`
+`}`
 
 Exemple de réponse (en cas de succès) :
 
