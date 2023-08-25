@@ -148,7 +148,7 @@ Paramètres de la Requête
 
 L'ID du Pokémon à supprimer est spécifié dans l'URL.
 
-**<center>Modifier un Pokémon</center>*$
+**<center>Modifier un Pokémon</center>**
 
 Méthode HTTP : PUT
 
