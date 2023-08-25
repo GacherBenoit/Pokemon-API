@@ -29,7 +29,7 @@ Il se compose d'une table Pokémon et d'une table User pour la partie sécurité
 
 Le code est commenté en anglais pour une raison d'exercice pratique et d'inclusion.
 
-## Fonctionnalités
+## Fonctionnalités 🚀
 
 **Opérations CRUD :**
 
