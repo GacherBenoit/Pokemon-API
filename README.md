@@ -84,16 +84,19 @@ Voici la liste des points de terminaison:
 
 Se Connecter et Récupérer un Token JWT
 
+
 Méthode HTTP : POST
 Endpoint : /api/login
 Paramètres du Corps de la Requête
 
 Envoyez les informations d'identification (nom d'utilisateur et mot de passe) dans le corps de la requête au format JSON.
 
-Créer un Nouveau Pokémon
+Créer un Nouveau Pokémon  
 
 Méthode HTTP : POST
+
 Endpoint : /api/pokemons
+
 Paramètres du Corps de la Requête
 
 Envoyez les détails du nouveau Pokémon dans le corps de la requête au format JSON.
@@ -101,7 +104,9 @@ Envoyez les détails du nouveau Pokémon dans le corps de la requête au format 
 Récupérer un Pokémon par son ID
 
 Méthode HTTP : GET
+
 Endpoint : /api/pokemons/:id
+
 Paramètres de la Requête
 
 L'ID du Pokémon est spécifié dans l'URL.
@@ -109,15 +114,21 @@ L'ID du Pokémon est spécifié dans l'URL.
 Récupérer une Liste de Pokémon
 
 Méthode HTTP : GET
+
 Endpoint : /api/pokemons
+
 Query Params
 
 limit : Limite le nombre de Pokémon retournés.
+
 name : Filtre les Pokémon par nom (facultatif).
+
 Supprimer un Pokémon
 
 Méthode HTTP : DELETE
+
 Endpoint : /api/pokemons/:id
+
 Paramètres de la Requête
 
 L'ID du Pokémon à supprimer est spécifié dans l'URL.
@@ -125,7 +136,9 @@ L'ID du Pokémon à supprimer est spécifié dans l'URL.
 Modifier un Pokémon
 
 Méthode HTTP : PUT
+
 Endpoint : /api/pokemons/:id
+
 Paramètres du Corps de la Requête
 
 Envoyez les détails mis à jour du Pokémon dans le corps de la requête au format JSON.
