@@ -1,7 +1,5 @@
 # API-POKEMONS 
 
-:pikachu: 
-
 [![Node.js](https://img.shields.io/badge/Node.js-v20.2.0-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/npm/v/express.svg?logo=express&label=express)](https://www.npmjs.com/package/express)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/npm)
@@ -50,7 +48,7 @@ Chaque endpoint de l'API est soigneusement configuré pour renvoyer des messages
 Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt pour les mots de passe et l'utilisation de JSON Web Token (JWT) pour l'authentification.
 Actuellement, le projet n'inclut pas de configuration CORS (Cross-Origin Resource Sharing). Il est important de noter que cette absence est délibérée et correspond à la nature du stade actuel de développement.
 
-## Installation :hammer_and_wrench:
+:hammer_and_wrench: ## Installation 
 
 Clonez le Répertoire : Ouvrez un terminal et utilisez la commande suivante pour cloner le répertoire de votre projet depuis GitHub (si c'est là où il est hébergé).
 
@@ -78,7 +76,7 @@ Lancer le projet : Exécuter le script dans le terminal `npm start`.  Un message
 En cas de succès cela exporteras les tables et leurs données , un utilisateur et quelques pokémons.
 
 
-## Utilisation :computer:  
+:computer: ## Utilisation   
 
 1. Authentification : Se connecter et obtenir un token JWT
 
