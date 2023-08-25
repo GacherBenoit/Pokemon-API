@@ -2,7 +2,7 @@
 const { Pokemon } = require('../db/sequelize');
 // Error validation of Sequelize
 const { ValidationError, UniqueConstraintError } = require('sequelize');
-// Import Auth
+// Import Auth Middleware
 const auth =require('../auth/auth')
 
 module.exports = (app) => {

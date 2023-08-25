@@ -1,8 +1,10 @@
 // Import Pokemon model
 const { Pokemon } = require('../db/sequelize');
-// Import Auth
+// Import Auth Middleware
 const auth =require('../auth/auth')
 
+// In first we find pokemon before delete it for mesage to the client with findByPk method
+// And we delete it with destroy method
 module.exports = (app) => {
     app.delete('/api/pokemons/:id',auth,(req,res) => {
         Pokemon.findByPk(req.params.id).then(pokemon => {
@@ -27,5 +29,3 @@ module.exports = (app) => {
     })
 }
 
-// In first we find pokemon before delete it for mesage to the client with findByPk method
-// And we delete it with destroy method

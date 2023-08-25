@@ -2,9 +2,13 @@
 const { Pokemon } = require('../db/sequelize');
 // Error validation of Sequelize
 const { ValidationError } = require('sequelize');
-// Import Auth
+// Import Auth Middleware
 const auth =require('../auth/auth')
 
+
+// We combine two methods: 
+// Update to aplly changes in DB
+// FindByPk to return information of modified pokemon to the client
 module.exports = (app) => {
     app.put('/api/pokemons/:id',auth, (req,res) => {
         const id =req.params.id
@@ -36,7 +40,3 @@ module.exports = (app) => {
 }
 
 
-// We combine two methods: 
-
-// Update to aplly changes in DB
-// FindByPk to return information of modified pokemon to the client
