@@ -1,4 +1,4 @@
-# Nom de Votre Projet
+# API-POKEMONS
 
 Courte description de votre projet en une ou deux phrases.
 
@@ -6,7 +6,6 @@ Courte description de votre projet en une ou deux phrases.
 
 - [Aperçu](#aperçu)
 - [Fonctionnalités](#fonctionnalités)
-- [Captures d'écran](#captures-décran)
 - [Installation](#installation)
 - [Utilisation](#utilisation)
 - [Contribuer](#contribuer)
@@ -14,28 +13,71 @@ Courte description de votre projet en une ou deux phrases.
 
 ## Aperçu
 
-Donnez un aperçu de votre projet ici. Expliquez brièvement ce qu'il fait et pourquoi c'est intéressant.
+Le projet est une API Rest développé sous NodeJs avec Express.
+
+C'est un projet simple qui a pour objectif personnel de prendre en main Javascript coté Back-end.
+
+Il se compose d'une table Pokémon et d'une table User pour la partie sécurité.
 
 ## Fonctionnalités
 
-- Liste des principales fonctionnalités de votre projet.
-- Vous pouvez utiliser des puces pour lister les fonctionnalités.
+Opérations CRUD : Le projet met en place un système complet de création, lecture, mise à jour et suppression (CRUD) pour la table des Pokémon, vous permettant de gérer facilement les données Pokémon.
 
-## Captures d'écran
+Utilisation de paramètres d'URL et de query params : Les fonctionnalités du projet sont accessibles via des paramètres d'URL et des query parameters, offrant une flexibilité dans la personnalisation des requêtes.
 
-Insérez ici des captures d'écran ou des images qui montrent comment fonctionne votre projet. Cela peut aider à donner une idée visuelle de ce à quoi ressemble votre projet.
+Sécurité renforcée : Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt pour les mots de passe et l'utilisation de JSON Web Token (JWT) pour l'authentification.
 
 ## Installation
 
-Expliquez comment installer votre projet. Vous pouvez inclure des commandes à exécuter ou des liens vers des instructions détaillées d'installation.
+Clonez le Répertoire : Ouvrez un terminal et utilisez la commande suivante pour cloner le répertoire de votre projet depuis GitHub (si c'est là où il est hébergé).
+
+"git clone https://github.com/VotreNom/VotreProjet.git"
+
+Installez les Dépendances : Utilisez la commande suivante pour installer toutes les dépendances listées dans le fichier package.json .
+
+"npm install"
+
+Configuration de l'Environnement : Assurez-vous d'avoir un fichier .env à la racine de votre projet pour définir vos variables d'environnement, notamment les informations sensibles comme les clés secrètes pour JWT et les paramètres de base de données. Dans ce projet nous avons définis dans le fichier .env:
+
+-La clé privé utilisé pour la génération de Token JWT. Variable définis dans le projet : 'private_key'
+-L'adresse du serveur de votre base de données. Variable définis dans le projet : 'host'
+-Le nom de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'username'
+-Le mot de passe de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'password'
 
 ## Utilisation
 
-Décrivez comment utiliser votre projet. Fournissez des exemples de commandes, de configurations ou d'autres informations pertinentes.
+1. Authentification : Se connecter et obtenir un token JWT
+
+Utilisez une requête POST pour vous connecter et obtenir un token JWT à partir de la route /api/login. Dans le corps de la requête, envoyez les informations d'identification au format JSON (nom d'utilisateur et mot de passe). Si les informations sont valides, vous recevrez un token JWT que vous devrez inclure dans les en-têtes de vos requêtes ultérieures.
+
+POST /api/login
+
+{
+  "username": "votreNomUtilisateur",
+  "password": "votreMotDePasse"
+}
+
+Exemple de réponse (en cas de succès) :
+
+{
+  "message": "Authentification réussie",
+  "token": "votreTokenJWT"
+}
+
+2. Obtenir la liste des pokémons limitée
+
+Après avoir obtenu un token JWT en vous connectant avec succès, vous pouvez utiliser ce token pour accéder à des routes protégées. Dans cet exemple, nous allons utiliser la route /api/pokemons pour obtenir une liste de pokémons avec une limite spécifiée.
+
+Exemple de requête :
+
+GET /api/pokemons?limit=10
+Authorization: Bearer votreTokenJWT
+
+Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
 
 ## Contribuer
 
-Expliquez comment les autres peuvent contribuer à votre projet. Incluez des informations sur le processus de soumission des demandes de tirage (pull requests) et d'autres moyens de participer.
+Ce projet s'appuie sur la documentation de NodeJs, Express et la formation de l'excelent Simon Dieny.
 
 ## Licence
 
