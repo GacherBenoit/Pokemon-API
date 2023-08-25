@@ -1,4 +1,6 @@
-# API-POKEMONS :pikachu: 
+# API-POKEMONS 
+
+:pikachu: 
 
 [![Node.js](https://img.shields.io/badge/Node.js-v20.2.0-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/npm/v/express.svg?logo=express&label=express)](https://www.npmjs.com/package/express)
@@ -76,7 +78,7 @@ Lancer le projet : Exécuter le script dans le terminal `npm start`.  Un message
 En cas de succès cela exporteras les tables et leurs données , un utilisateur et quelques pokémons.
 
 
-## Utilisation :computer: : 
+## Utilisation :computer:  
 
 1. Authentification : Se connecter et obtenir un token JWT
 
