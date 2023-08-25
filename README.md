@@ -41,11 +41,11 @@ Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt 
 
 Clonez le Répertoire : Ouvrez un terminal et utilisez la commande suivante pour cloner le répertoire de votre projet depuis GitHub (si c'est là où il est hébergé).
 
-"git clone https://github.com/VotreNom/VotreProjet.git"
+`git clone https://github.com/VotreNom/VotreProjet.git`
 
 Installez les Dépendances : Utilisez la commande suivante pour installer toutes les dépendances listées dans le fichier package.json .
 
-"npm install"
+`npm install`
 
 Configuration de l'Environnement : Assurez-vous d'avoir un fichier .env à la racine de votre projet pour définir vos variables d'environnement, notamment les informations sensibles comme la clé secrète pour la génération de token JWT et les paramètres de base de données. 
 
@@ -67,17 +67,17 @@ Utilisez une requête POST pour vous connecter et obtenir un token JWT à partir
 
 POST /api/login
 
-{
-  "username": "votreNomUtilisateur",
-  "password": "votreMotDePasse"
-}
+`{                                    `
+`"username": "votreNomUtilisateur",   `
+`"password": "votreMotDePasse"        `
+`}                                    `
 
 Exemple de réponse (en cas de succès) :
 
 {
   "message": "Authentification réussie",
   "token": "votreTokenJWT"
-}
+}`
 
 2. Obtenir la liste des pokémons limitée
 
