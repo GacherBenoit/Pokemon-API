@@ -82,7 +82,7 @@ Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour
 
 Voici la liste des points de terminaison:
 
-Se Connecter et Récupérer un Token JWT
+**`Se Connecter et Récupérer un Token JWT`**
 
 
 Méthode HTTP : POST
