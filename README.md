@@ -67,17 +67,11 @@ Utilisez une requête POST pour vous connecter et obtenir un token JWT à partir
 
 POST /api/login
 
-`{`
-`"username": "votreNomUtilisateur",`
-`"password": "votreMotDePasse"`
-`}`
+`{"username": "votreNomUtilisateur","password": "votreMotDePasse"}`
 
 Exemple de réponse (en cas de succès) :
 
-{
-  "message": "Authentification réussie",
-  "token": "votreTokenJWT"
-}`
+`{"message": "Authentification réussie","token": "votreTokenJWT"}`
 
 2. Obtenir la liste des pokémons limitée
 
@@ -85,8 +79,8 @@ Après avoir obtenu un token JWT en vous connectant avec succès, vous pouvez ut
 
 Exemple de requête :
 
-GET /api/pokemons?limit=10
-Authorization: Bearer votreTokenJWT
+`GET /api/pokemons?limit=10`
+`Authorization: Bearer votreTokenJWT`
 
 Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
 
@@ -100,7 +94,7 @@ Voici la liste des points de terminaison:
 
 Méthode HTTP : POST
 
-Endpoint : /api/login
+Endpoint : `/api/login`
 
 Paramètres du Corps de la Requête
 
@@ -110,7 +104,7 @@ Envoyez les informations d'identification (nom d'utilisateur et mot de passe) da
 
 Méthode HTTP : POST
 
-Endpoint : /api/pokemons
+Endpoint : `/api/pokemons`
 
 Paramètres du Corps de la Requête
 
@@ -120,7 +114,7 @@ Envoyez les détails du nouveau Pokémon dans le corps de la requête au format 
 
 Méthode HTTP : GET
 
-Endpoint : /api/pokemons/:id
+Endpoint : `/api/pokemons/:id`
 
 Paramètres de la Requête
 
@@ -130,7 +124,7 @@ L'ID du Pokémon est spécifié dans l'URL.
 
 Méthode HTTP : GET
 
-Endpoint : /api/pokemons
+Endpoint : `/api/pokemons`
 
 Query Params
 
@@ -142,7 +136,7 @@ name : Filtre les Pokémon par nom (facultatif).
 
 Méthode HTTP : DELETE
 
-Endpoint : /api/pokemons/:id
+Endpoint : `/api/pokemons/:id`
 
 Paramètres de la Requête
 
@@ -152,7 +146,7 @@ L'ID du Pokémon à supprimer est spécifié dans l'URL.
 
 Méthode HTTP : PUT
 
-Endpoint : /api/pokemons/:id
+Endpoint : `/api/pokemons/:id`
 
 Paramètres du Corps de la Requête
 
