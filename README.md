@@ -138,7 +138,7 @@ limit : Limite le nombre de Pokémon retournés.
 
 name : Filtre les Pokémon par nom (facultatif).
 
-<center>**Supprimer un Pokémon**</center>
+<center>Supprimer un Pokémon</center>
 
 Méthode HTTP : DELETE
 
@@ -148,7 +148,7 @@ Paramètres de la Requête
 
 L'ID du Pokémon à supprimer est spécifié dans l'URL.
 
-**<center>Modifier un Pokémon</center>**
+<center>Modifier un Pokémon</center>
 
 Méthode HTTP : PUT
 
