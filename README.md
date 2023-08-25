@@ -114,7 +114,7 @@ Méthode HTTP : POST
 
 Endpoint : `/api/login`
 
-Paramètres du Corps de la Requête
+Paramètres du Corps de la Requête:
 
 Envoyez les informations d'identification (nom d'utilisateur et mot de passe) dans le corps de la requête au format JSON.
 
@@ -124,7 +124,7 @@ Méthode HTTP : POST
 
 Endpoint : `/api/pokemons`
 
-Paramètres du Corps de la Requête
+Paramètres du Corps de la Requête:
 
 Envoyez les détails du nouveau Pokémon dans le corps de la requête au format JSON.
 
@@ -134,7 +134,7 @@ Méthode HTTP : GET
 
 Endpoint : `/api/pokemons/:id`
 
-Paramètres de la Requête
+Paramètres de la Requête:
 
 L'ID du Pokémon est spécifié dans l'URL.
 
@@ -156,7 +156,7 @@ Méthode HTTP : DELETE
 
 Endpoint : `/api/pokemons/:id`
 
-Paramètres de la Requête
+Paramètres de la Requête:
 
 L'ID du Pokémon à supprimer est spécifié dans l'URL.
 
@@ -166,7 +166,7 @@ Méthode HTTP : PUT
 
 Endpoint : `/api/pokemons/:id`
 
-Paramètres du Corps de la Requête
+Paramètres du Corps de la Requête:
 
 Envoyez les détails mis à jour du Pokémon dans le corps de la requête au format JSON.
 
