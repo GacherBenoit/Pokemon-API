@@ -80,10 +80,12 @@ Après avoir obtenu un token JWT en vous connectant avec succès, vous pouvez ut
 Exemple de requête :
 
 `GET /api/pokemons?limit=10`
+
+Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. 
+
+Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
+
 `Authorization: Bearer votreTokenJWT`
-
-Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
-
 
 ## Points de terminaison
 
