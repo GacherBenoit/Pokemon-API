@@ -23,19 +23,19 @@ Le code est commenté en anglais pour une raison d'exercice pratique et d'inclus
 
 ## Fonctionnalités
 
-`Opérations CRUD :`
+**Opérations CRUD :**
 
 Le projet met en place un système complet de création, lecture, mise à jour et suppression (CRUD) pour la table des Pokémon, vous permettant de gérer facilement les données Pokémon.
 
-`Utilisation de paramètres d'URL et de query params :`
+**Utilisation de paramètres d'URL et de query params :**
 
 Les fonctionnalités du projet sont accessibles via des paramètres d'URL et des query parameters, offrant une flexibilité dans la personnalisation des requêtes.
 
-`Communication Claire avec les Consommateurs de l'API :`
+**Communication Claire avec les Consommateurs de l'API :**
 
 Chaque endpoint de l'API est soigneusement configuré pour renvoyer des messages précis et significatifs en cas de scénarios d'erreur. Que ce soit lors de la validation des données, d'une requête non autorisée ou de toute autre situation exceptionnelle, nous nous sommes efforcés de fournir des messages d'erreur détaillés et informatifs.
 
-`Sécurité renforcée` :
+**Sécurité renforcée :**
 
 Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt pour les mots de passe et l'utilisation de JSON Web Token (JWT) pour l'authentification.
 
