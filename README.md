@@ -40,6 +40,7 @@ Chaque endpoint de l'API est soigneusement configuré pour renvoyer des messages
 **Sécurité renforcée :**
 
 Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt pour les mots de passe et l'utilisation de JSON Web Token (JWT) pour l'authentification.
+Actuellement, le projet n'inclut pas de configuration CORS (Cross-Origin Resource Sharing). Il est important de noter que cette absence est délibérée et correspond à la nature du stade actuel de développement.
 
 ## Installation
 
