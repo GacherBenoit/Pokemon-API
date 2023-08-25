@@ -8,6 +8,7 @@ Courte description de votre projet en une ou deux phrases.
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
 - [Utilisation](#utilisation)
+- [#Points de terminaison](#points de terminaison)
 - [Contribuer](#contribuer)
 - [Licence](#licence)
 
@@ -79,6 +80,10 @@ GET /api/pokemons?limit=10
 Authorization: Bearer votreTokenJWT
 
 Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour indiquer le nombre de pokémons que vous souhaitez obtenir. Assurez-vous également d'inclure le token JWT dans l'en-tête Authorization, en utilisant le schéma "Bearer", comme indiqué ci-dessus. Cela garantira que vous avez l'autorisation d'accéder à cette ressource protégée.
+
+
+## Points de terminaison
+
 
 Voici la liste des points de terminaison:
 
