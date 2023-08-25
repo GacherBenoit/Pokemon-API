@@ -97,8 +97,7 @@ Dans cette requête, vous spécifiez le paramètre 'limit' dans la requête pour
 
 Voici la liste des points de terminaison:
 
-**Se Connecter et Récupérer un Token JWT**
-
+<center>**Se Connecter et Récupérer un Token JWT**</center>
 
 Méthode HTTP : POST
 
@@ -108,7 +107,7 @@ Paramètres du Corps de la Requête
 
 Envoyez les informations d'identification (nom d'utilisateur et mot de passe) dans le corps de la requête au format JSON.
 
-**Créer un Nouveau Pokémon**  
+<center>**Créer un Nouveau Pokémon**</center>  
 
 Méthode HTTP : POST
 
@@ -118,7 +117,7 @@ Paramètres du Corps de la Requête
 
 Envoyez les détails du nouveau Pokémon dans le corps de la requête au format JSON.
 
-**Récupérer un Pokémon par son ID**
+<center>**Récupérer un Pokémon par son ID**</center>
 
 Méthode HTTP : GET
 
@@ -128,7 +127,7 @@ Paramètres de la Requête
 
 L'ID du Pokémon est spécifié dans l'URL.
 
-**Récupérer une Liste de Pokémon**
+<center>**Récupérer une Liste de Pokémon**</center>
 
 Méthode HTTP : GET
 
@@ -140,7 +139,7 @@ limit : Limite le nombre de Pokémon retournés.
 
 name : Filtre les Pokémon par nom (facultatif).
 
-**Supprimer un Pokémon**
+<center>**Supprimer un Pokémon**</center>
 
 Méthode HTTP : DELETE
 
@@ -150,7 +149,7 @@ Paramètres de la Requête
 
 L'ID du Pokémon à supprimer est spécifié dans l'URL.
 
-**Modifier un Pokémon**
+<center>**Modifier un Pokémon**</center>
 
 Méthode HTTP : PUT
 
