@@ -20,7 +20,7 @@ API Rest sur la ressources des Pokémons.
 
 
  ## Aperçu 
-👀 
+ 
 Le projet est une API Rest développée sous NodeJs avec Express et l'ORM Sequelize.
 
 C'est un projet simple qui a pour objectif personnel de prendre en main Javascript coté Back-end.
@@ -29,7 +29,7 @@ Il se compose d'une table Pokémon et d'une table User pour la partie sécurité
 
 Le code est commenté en anglais pour une raison d'exercice pratique et d'inclusion.
 
-## Fonctionnalités 🚀
+## Fonctionnalités 
 
 **Opérations CRUD :**
 
@@ -48,7 +48,7 @@ Chaque endpoint de l'API est soigneusement configuré pour renvoyer des messages
 Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt pour les mots de passe et l'utilisation de JSON Web Token (JWT) pour l'authentification.
 Actuellement, le projet n'inclut pas de configuration CORS (Cross-Origin Resource Sharing). Il est important de noter que cette absence est délibérée et correspond à la nature du stade actuel de développement.
 
-  ## Installation :hammer_and_wrench:
+  ## Installation 
 
 Clonez le Répertoire : Ouvrez un terminal et utilisez la commande suivante pour cloner le répertoire de votre projet depuis GitHub (si c'est là où il est hébergé).
 
@@ -76,9 +76,9 @@ Lancer le projet : Exécuter le script dans le terminal `npm start`.  Un message
 En cas de succès cela exporteras les tables et leurs données , un utilisateur et quelques pokémons.
 
 
- ## Utilisation :computer:  
+ ## Utilisation 
 
-1. Authentification : Se connecter et obtenir un token JWT
+1. Authentification : Se connecter et obtenir un token JWT 
 
 Utilisez une requête POST pour vous connecter et obtenir un token JWT à partir de la route /api/login. Dans le corps de la requête, envoyez les informations d'identification au format JSON (nom d'utilisateur et mot de passe). Si les informations sont valides, vous recevrez un token JWT que vous devrez inclure dans les en-têtes de vos requêtes ultérieures.
 
