@@ -39,10 +39,10 @@ Installez les Dépendances : Utilisez la commande suivante pour installer toutes
 
 Configuration de l'Environnement : Assurez-vous d'avoir un fichier .env à la racine de votre projet pour définir vos variables d'environnement, notamment les informations sensibles comme les clés secrètes pour JWT et les paramètres de base de données. Dans ce projet nous avons définis dans le fichier .env:
 
--La clé privé utilisé pour la génération de Token JWT. Variable définis dans le projet : 'private_key'
--L'adresse du serveur de votre base de données. Variable définis dans le projet : 'host'
--Le nom de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'username'
--Le mot de passe de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'password'
+-La clé privé utilisé pour la génération de Token JWT. Variable définis dans le projet : 'private_key'  
+-L'adresse du serveur de votre base de données. Variable définis dans le projet : 'host'  
+-Le nom de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'username'  
+-Le mot de passe de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'password'  
 
 ## Utilisation
 
