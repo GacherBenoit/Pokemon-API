@@ -2,7 +2,7 @@
 const { Pokemon } = require('../db/sequelize');
 // Import sequelize operator
 const { Op } = require('sequelize');
-// Import Auth
+// Import Auth Middleware
 const auth =require('../auth/auth')
 
  // Export function who take in parameter all apllication.With this we can separate route simpliest and in different modules
