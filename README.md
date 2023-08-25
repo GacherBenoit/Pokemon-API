@@ -63,6 +63,11 @@ Dans ce projet nous avons définis dans le fichier .env:
 
 -Le mot de passe de l'utilisateur enregistrer en base de donnée. Variable définis dans le projet : 'password'  
 
+
+Lancer le projet : Exécuter dans le terminal `npm start`.Un message dans le terminal vous indiquera si la base de donnée à bien été synchronisé.
+En cas de succès cela exporteras les tables et leurs données , un utilisateur et quelques pokémons.
+
+
 ## Utilisation
 
 1. Authentification : Se connecter et obtenir un token JWT
