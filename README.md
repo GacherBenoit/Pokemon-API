@@ -86,7 +86,9 @@ Se Connecter et Récupérer un Token JWT
 
 
 Méthode HTTP : POST
+
 Endpoint : /api/login
+
 Paramètres du Corps de la Requête
 
 Envoyez les informations d'identification (nom d'utilisateur et mot de passe) dans le corps de la requête au format JSON.
