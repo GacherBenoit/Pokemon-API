@@ -144,11 +144,11 @@ Méthode HTTP : GET
 
 Endpoint : `/api/pokemons`
 
-Query Params
+Query Params:
 
-limit : Limite le nombre de Pokémon retournés.
+`limit` : Limite le nombre de Pokémon retournés.
 
-name : Filtre les Pokémon par nom (facultatif).
+`name` : Filtre les Pokémon par nom (facultatif).
 
 **Supprimer un Pokémon**
 
