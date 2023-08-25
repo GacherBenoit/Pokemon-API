@@ -13,11 +13,13 @@ API Rest sur la ressources des Pokémons.
 
 ## Aperçu
 
-Le projet est une API Rest développé sous NodeJs avec Express.
+Le projet est une API Rest développée sous NodeJs avec Express.
 
 C'est un projet simple qui a pour objectif personnel de prendre en main Javascript coté Back-end.
 
 Il se compose d'une table Pokémon et d'une table User pour la partie sécurité.
+
+Le code est commenté en anglais pour une raison d'exercice pratique et d'inclusion.
 
 ## Fonctionnalités
 
