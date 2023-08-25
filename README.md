@@ -47,7 +47,7 @@ Chaque endpoint de l'API est soigneusement configuré pour renvoyer des messages
 Le projet intègre des mécanismes de sécurité tels que le chiffrement bcrypt pour les mots de passe et l'utilisation de JSON Web Token (JWT) pour l'authentification.
 Actuellement, le projet n'inclut pas de configuration CORS (Cross-Origin Resource Sharing). Il est important de noter que cette absence est délibérée et correspond à la nature du stade actuel de développement.
 
-## Installation
+## Installation :hammer_and_wrench:
 
 Clonez le Répertoire : Ouvrez un terminal et utilisez la commande suivante pour cloner le répertoire de votre projet depuis GitHub (si c'est là où il est hébergé).
 
