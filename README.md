@@ -9,8 +9,7 @@ Courte description de votre projet en une ou deux phrases.
 - [Installation](#installation)
 - [Utilisation](#utilisation)
 - [Points de terminaison](#points-de-terminaison)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
+
 
 ## Aperçu
 
@@ -149,7 +148,7 @@ Paramètres de la Requête
 
 L'ID du Pokémon à supprimer est spécifié dans l'URL.
 
-<center>**Modifier un Pokémon**</center>
+**<center>Modifier un Pokémon</center>*$
 
 Méthode HTTP : PUT
 
@@ -159,17 +158,3 @@ Paramètres du Corps de la Requête
 
 Envoyez les détails mis à jour du Pokémon dans le corps de la requête au format JSON.
 
-
-## Contribuer
-
-Ce projet s'appuie sur la documentation de NodeJs, Express et la formation de l'excelent Simon Dieny.
-
-## Licence
-
-Indiquez ici la licence sous laquelle votre projet est distribué. Par exemple :
-
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
----
-
-Copyright © Année | Votre Nom
