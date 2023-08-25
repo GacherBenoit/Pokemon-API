@@ -1,8 +1,10 @@
 // Import Pokemon model
 const { Pokemon } = require('../db/sequelize');
+// Import Auth
+const auth =require('../auth/auth')
 
 module.exports = (app) => {
-    app.delete('/api/pokemons/:id',(req, res) => {
+    app.delete('/api/pokemons/:id',auth,(req,res) => {
         Pokemon.findByPk(req.params.id).then(pokemon => {
             if(pokemon === null) {
                 const message = `Le pokémon demandé n/ n'exite pas. Réessayez avec un autre identifiant.`
