@@ -20,7 +20,7 @@ API Rest sur la ressources des Pokémons.
 
 ## Aperçu
 
-Le projet est une API Rest développée sous NodeJs avec Express.
+Le projet est une API Rest développée sous NodeJs avec Express et l'ORM Sequelize.
 
 C'est un projet simple qui a pour objectif personnel de prendre en main Javascript coté Back-end.
 
