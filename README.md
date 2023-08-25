@@ -1,6 +1,7 @@
 # API-POKEMONS
 [![Node.js](https://img.shields.io/badge/Node.js-v20.2.0-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-v4.18.2-blue.svg)](https://expressjs.com/)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/npm)
 
 API Rest sur la ressources des Pokémons.
 
