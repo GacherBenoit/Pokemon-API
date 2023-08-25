@@ -4,11 +4,7 @@
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/npm)
 [![Nodemon](https://img.shields.io/badge/nodemon-v3.0.1-blue.svg?logo=nodemon)](https://www.npmjs.com/package/nodemon)
 [![Bcrypt](https://img.shields.io/npm/v/bcrypt.svg?logo=bcrypt&label=bcrypt)](https://www.npmjs.com/package/bcrypt)
-[![Bcrypt](https://img.shields.io/npm/v/bcrypt.svg?label=Bcrypt)](https://www.npmjs.com/package/bcrypt)
-
-
-
-
+[![Sequelize](https://img.shields.io/npm/v/sequelize.svg?logo=sequelize)](https://www.npmjs.com/package/sequelize)
 
 
 API Rest sur la ressources des Pokémons.
