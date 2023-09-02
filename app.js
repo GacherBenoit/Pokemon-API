@@ -27,7 +27,7 @@ app.use(morgan('dev'))                                  /* app.use((req,res,next
                                                         next()
                                                         }) */
 //MIDLEWARE BODY-PARSER
-// Use to parse data recieve with HTPP in JSON 
+// Use to parse data recieve with HTTP in JSON 
 app.use(bodyParser.json())
 
 sequelize.initDb();
